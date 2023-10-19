@@ -82,13 +82,16 @@ boxes.forEach(box => {
   })
 })
 
-const resetBtn = document.querySelector('#reset');
-resetBtn.addEventListener('click', () => {
+function startGame() {
+    modal.style.display = "block";
+    console.log(modal.style.display)
+}
+
+function reset() {
     boxes.forEach(box => {
         box.innerHTML = '';
     })
 
-    resetBtn.innerHTML = 'Reset';
     move = 0
 
     moves = [["", "", ""],
@@ -96,4 +99,27 @@ resetBtn.addEventListener('click', () => {
              ["", "", ""]];
     result.innerHTML = `<h2>${move % 2 === 0 ? X : O}'s turn</h2>`;
     game = true
+}
+
+const resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener('click', () => {
+    if (resetBtn.innerHTML === 'Start') {
+        startGame()
+        resetBtn.innerHTML = 'Reset'
+    } else {
+        reset()
+    }
 })
+
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

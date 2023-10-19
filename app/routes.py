@@ -12,12 +12,19 @@ def configure_routes(app, db, login_manager):
     def index():
         return render_template('index.html', current_user=current_user)
 
-    @app.route('/auth', methods=['GET', 'POST'])
-    def auth():
+    @app.route('/register', methods=['GET', 'POST'])
+    def register():
         if current_user.is_authenticated:
             return redirect(url_for('index'))
         
-        return render_template('auth.html', current_user=current_user)
+        return render_template('register.html', current_user=current_user)
+    
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if current_user.is_authenticated:
+            return redirect(url_for('index'))
+        
+        return render_template('login.html', current_user=current_user)
     
     @app.route('/logout')
     @login_required
