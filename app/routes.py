@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user, logout_user, login_user
 from werkzeug.security import check_password_hash
 
-def configure_routes(app, db, login_manager):
+def configure_routes(app, db, login_manager, socketio):
     @login_manager.user_loader
     def load_user(user_id):
         from app.models import User

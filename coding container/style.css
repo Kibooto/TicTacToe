@@ -168,3 +168,25 @@ li {
   text-decoration: none;
   cursor: pointer;
 }
+
+.input-name {
+    width: 100%;
+    max-width: 300px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 2rem;
+    background-color: rgb(162, 134, 239);
+}
+
+.input-name:hover {
+    background-color: #837aff;
+}
+
+.input-name::placeholder {
+    color: #000000;
+}
